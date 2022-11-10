@@ -8,24 +8,18 @@ import moment from 'moment';
 const Dashboard = () => {
   const [history, setHistory] = useState([]);
 
+  const response = isAuthenticated();
+  const details = response[0];
+  console.log(details);
   const {
     user: { _id, name, email, role },
-  } = isAuthenticated();
+  } = details;
 
   const token = isAuthenticated().token;
-
-  const init = (userId, token) => {
-    getPurchaseHistory(userId, token).then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setHistory(data);
-      }
-    });
-  };
+  console.log(isAuthenticated());
 
   useEffect(() => {
-    init(_id, token);
+    // init(_id, token);
   }, []);
 
   const userLinks = () => {

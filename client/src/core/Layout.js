@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from './Menu';
+import Menu2 from './Menu2';
 import '../styles.css';
 
 const Layout = ({
@@ -9,7 +9,7 @@ const Layout = ({
   children,
 }) => (
   <div>
-    <Menu />
+    <Menu2 />
     <div className='jumbotron mt-5'>
       <h2>{title}</h2>
       <p className='lead'>{description}</p>

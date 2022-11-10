@@ -91,7 +91,7 @@ export default function Signin() {
       if (user && user.role === 1) {
         return <Redirect to='/admin/dashboard' />;
       } else {
-        return <Redirect to='/user/dashboard' />;
+        return <Redirect to='/' />;
       }
     }
     if (isAuthenticated()) {
@@ -139,7 +139,7 @@ export default function Signin() {
             type='password'
             id='password'
             onChange={handleChange('password')}
-            type='password'
+
             value={password}
             autoComplete='current-password'
           />

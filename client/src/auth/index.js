@@ -1,32 +1,49 @@
 import { API } from '../config';
 
-export const signup = (user) => {
-  // console.log(name, email, password);
-  return fetch(`${API}/signup`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log(err);
+export const signup = async (user) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_DB_URL}/${process.env.REACT_APP_ADD_USER_URL}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
     });
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const signin = (user) => {
+
+// export const signin = async (user) => {
+//   // console.log(name, email, password);
+//   try {
+//     const response = await fetch(`${process.env.REACT_APP_DB_URL}/${process.env.REACT_APP_GET_USER_EMAIL_URL}/${user.email}`, {
+//       method: 'GET',
+//       headers: {
+//         Accept: 'application/json',
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(user),
+//     });
+//     return await response.json();
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+
+export const signin = async (user) => {
   // console.log(name, email, password);
-  return fetch(`${API}/signin`, {
-    method: 'POST',
+  console.log(process.env.REACT_APP_DB_URL);
+  return await fetch(`${process.env.REACT_APP_DB_URL}/${process.env.REACT_APP_GET_USER_EMAIL_URL}/${user.email}`, {
+    method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
+    }
   })
     .then((response) => {
       return response.json();
